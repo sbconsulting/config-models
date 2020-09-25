@@ -126,7 +126,6 @@ module aether-subscriber {
             type leafref {
               path "/ap:access-profile/ap:access-profile/ap:id";
             }            
-//            type ap:access-profile-id;
             description
                 "Link to access profile";
           }

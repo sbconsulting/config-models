@@ -3,6 +3,7 @@ module github.com/onosproject/config-models/modelplugin/aether-1.0.0
 go 1.14
 
 require (
+	github.com/ghodss/yaml v1.0.0
 	github.com/golang/protobuf v1.3.3
 	github.com/onosproject/config-models v0.6.9
 	github.com/openconfig/gnmi v0.0.0-20190823184014-89b2bf29312c

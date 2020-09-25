@@ -69,6 +69,18 @@ module apn-profile {
         description "enable gx interface";
       }
 
+      leaf network {
+        type string {
+          length 1..100;
+        }
+        description "TODO: unknown fix me";
+      }
+
+      leaf usage {
+        type uint32;
+        description "TODO: unknown fix me";
+      }    
+
       leaf description {
         type string {
           length 1..100;

@@ -3,7 +3,8 @@ export GO111MODULE=on
 
 .PHONY: build
 
-ONOS_CONFIG_VERSION := latest
+KIND_CLUSTER_NAME ?= kind
+ONOS_CONFIG_VERSION ?= latest
 ONOS_BUILD_VERSION := v0.6.3
 
 build/_output/copylibandstay: # @HELP build the copylibandstay utility
@@ -132,7 +133,9 @@ images: config-plugin-docker-testdevice-1.0.0 \
         config-plugin-docker-aether-1.0.0
 
 kind: # @HELP build Docker images and add them to the currently configured kind cluster
-kind: images
+kind: images kind-only
+
+kind-only:
 	@if [ "`kind get clusters`" = '' ]; then echo "no kind cluster found" && exit 1; fi
 	kind load docker-image onosproject/config-model-testdevice-1.0.0:${ONOS_CONFIG_VERSION}
 	kind load docker-image onosproject/config-model-testdevice-2.0.0:${ONOS_CONFIG_VERSION}
@@ -144,6 +147,9 @@ kind: images
 
 all: # @HELP build all libraries and all docker images
 all: build images
+
+aether-models:
+	cd modelplugin/aether-1.0.0 && go generate
 
 publish: # @HELP publish version on github and dockerhub
 	./../build-tools/publish-version ${VERSION} \

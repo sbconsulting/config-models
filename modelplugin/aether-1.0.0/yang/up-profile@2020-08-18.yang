@@ -49,6 +49,42 @@ module up-profile {
         description "access control policy";
       }
 
+      list access-tags {
+        key "tag";
+        leaf tag {
+          type string {
+            length 1..32;
+          }               
+          description
+              "Tag Name";
+        }
+        leaf value {
+          type string {
+            length 1..32;
+          }               
+          description
+              "Tag Value";
+        }        
+      }
+
+      list qos-tags {
+        key "tag";
+        leaf tag {
+          type string {
+            length 1..32;
+          }               
+          description
+              "Tag Name";
+        }
+        leaf value {
+          type string {
+            length 1..32;
+          }               
+          description
+              "Tag Value";
+        }        
+      }        
+
       leaf description {
         type string {
           length 1..100;
